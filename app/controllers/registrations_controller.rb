@@ -11,15 +11,18 @@
   end
 
   def create
-    if verify_recaptcha
-      super
-    else
-      build_resource({})
+     if !verify_recaptcha
+      flash.delete :recaptcha_error
+      build_resource(sign_up_params)
       resource.build_profile
-      #respond_with self.resource
-      flash[:error] = "Invalid Captcha.Please try again"
+      resource.valid?
+      resource.errors.add(:base, "There was an error with the recaptcha code below. Please re-enter the code.")
+      clean_up_passwords(resource)
       respond_with_navigational(resource) { render :new }
-    end    
+    else
+      flash.delete :recaptcha_error
+      super
+    end 
   end
     
   protected

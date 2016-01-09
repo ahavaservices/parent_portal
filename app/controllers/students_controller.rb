@@ -27,6 +27,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     @student.user_id = current_user.id
+    #@student.dob = construct_date(year,month,day)
 
     respond_to do |format|
       if @student.save

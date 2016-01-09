@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :dob %><br>
-    <%= f.text_field :dob %>
+    <%= f.date_select :dob, order: [:month, :day, :year], start_year: 1995, end_year:Date.today.year %>
   </div>
   <div class="field">
     <%= f.label :grade %><br>

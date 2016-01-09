@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  get 'profiles/edit'
+
+  patch 'profiles/update' => 'profiles#update', :as => :profile
+
   resources :students
   get 'home/index'
 
@@ -7,11 +12,14 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   #root 'home#index'
-   root 'students#index'
+   root 'home#index'
 
   #Recaptch Routes
   devise_for :users, controllers: { registrations: 'registrations' }
+
+  #Profiles
+  #get 'profile/edit' => 'profiles#edit'
+  #resources :profiles
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
