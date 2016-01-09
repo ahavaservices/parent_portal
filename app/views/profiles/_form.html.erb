@@ -1,0 +1,49 @@
+<%= form_for @profile, :url => profile_path do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class="field">
+    <%= label_tag :email %><br>
+    <%=current_user.email%>
+    <%#= text_field_tag :email,current_user.email,disabled: true %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :emergency_contact_name %><br>
+    <%= f.text_field :emergency_contact_name %>
+  </div>
+  <div class="field">
+    <%= f.label :emergency_contact_no %><br>
+    <%= f.text_field :emergency_contact_no %>
+  </div>
+ <!-- <div class="field">
+    <%#= f.label :club_id %><br>
+    <%#= f.number_field :club_id %>
+  </div>
+  <div class="field">
+    <%#= f.label :user_id %><br>
+    <%#= f.number_field :user_id %>
+  </div>-->
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
