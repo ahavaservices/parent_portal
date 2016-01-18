@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  namespace :admin do
+  resources :programs, :levels, :club_classes, :staffs, :class_rooms, :class_sessions
+  end
+  get 'enrollment/index'
+
+  get 'enrollment/new'
+
+  get 'enrollment/create'
+
+  get 'enrollment/update'
+
+  get 'enrollment/destroy'
 
   get 'profiles/edit'
 
