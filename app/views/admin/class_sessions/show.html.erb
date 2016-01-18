@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @admin_class_session.title %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @admin_class_session.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @admin_class_session.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_admin_class_session_path(@admin_class_session) %> |
+<%= link_to 'Back', admin_class_sessions_path %>

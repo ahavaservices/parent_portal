@@ -1,0 +1,49 @@
+<%= form_for([:admin,@club_class]) do |f| %>
+  <% if @club_class.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@club_class.errors.count, "error") %> prohibited this club_class from being saved:</h2>
+
+      <ul>
+      <% @club_class.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :min_age %><br>
+    <%= f.number_field :min_age %>
+  </div>
+  <div class="field">
+    <%= f.label :max_age %><br>
+    <%= f.number_field :max_age %>
+  </div>
+  <div class="field">
+    <%= f.label :max_students %><br>
+    <%= f.number_field :max_students %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :program_id %><br>
+    <%= f.number_field :program_id %>
+  </div>
+  <div class="field">
+    <%= f.label :level_id %><br>
+    <%= f.number_field :level_id %>
+  </div>
+  <div class="field">
+    <%= f.label :staff_id %><br>
+    <%= f.number_field :staff_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

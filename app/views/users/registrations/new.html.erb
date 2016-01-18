@@ -1,43 +1,67 @@
-<h2>Sign up</h2>
+<%if devise_error_messages!.present?%>
+          <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-ban"></i> Error!</h4>
+                      <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+                  </div>
+<%end%>
+  <div class="register-box">
+   <!--   <div class="register-logo">
+        <a href="/"><b>Parent</b>Portal</a>
+      </div>-->
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+      <div class="register-box-body">
+        <p class="login-box-msg">Register a new membership</p>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+         <div class="form-group has-feedback">
+            <%= f.email_field :email, autofocus: true, :class=>"form-control", :placeholder=>"Email" %>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          </div>
+         <%= f.fields_for :profile  do |profile| %>
+          <div class="form-group has-feedback">
+             <%= profile.text_field :first_name, :class=>"form-control", :placeholder=>"First Name"%>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>
+           <div class="form-group has-feedback">
+             <%= profile.text_field :last_name, :class=>"form-control", :placeholder=>"Last Name"%>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>
+          <% end %>
+         <div class="form-group has-feedback">
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"Password" %>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+             <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :placeholder=>"Retype password" %>
+            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+           <%= recaptcha_tags %>
+          </div>
+          <div class="row">
+            <div class="col-xs-8">
+              <div class="checkbox icheck">
+               <%#= recaptcha_tags %>
+              </div>
+            </div><!-- /.col -->
+            <div class="col-xs-4">
+            <%= f.submit "Sign up",:class => "btn btn-primary btn-block btn-flat" %>
+            </div><!-- /.col -->
+          </div>
+        <%end%>
 
-  <%= f.fields_for :profile  do |profile| %>
-      <div class="field">
-        <%= profile.label :first_name %><br />
-        <%= profile.text_field :first_name%>
-      </div>
-      <div class="field">
-        <%= profile.label :last_name %><br />
-        <%= profile.text_field :last_name%>
-      </div>
-  <% end %>
+        <div class="social-auth-links text-center">
+          <p>- OR -</p>
+          <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using Facebook</a>
+          <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using Google+</a>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+      <%= render "users/shared/links" %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-  <%#= recaptcha_tags %>
-  <div class="field">
-  <%= recaptcha_tags %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+      </div><!-- /.form-box -->
+    </div>
+  

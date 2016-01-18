@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Club Classes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Min age</th>
+      <th>Max age</th>
+      <th>Max students</th>
+      <th>Status</th>
+      <th>Program</th>
+      <th>Level</th>
+      <th>Staff</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @club_classes.each do |club_class| %>
+      <tr>
+        <td><%= club_class.name %></td>
+        <td><%= club_class.min_age %></td>
+        <td><%= club_class.max_age %></td>
+        <td><%= club_class.max_students %></td>
+        <td><%= club_class.status %></td>
+        <td><%= club_class.program_id %></td>
+        <td><%= club_class.level_id %></td>
+        <td><%= club_class.staff_id %></td>
+        <td><%= link_to 'Show', admin_club_class_path(club_class) %></td>
+        <td><%= link_to 'Edit', edit_admin_club_class_path(club_class) %></td>
+        <td><%= button_to 'Destroy', admin_club_class_path(club_class), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Club class',  new_admin_club_class_path %>

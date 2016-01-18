@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Admin Class Rooms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class no</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_class_rooms.each do |admin_class_room| %>
+      <tr>
+        <td><%= admin_class_room.class_no %></td>
+        <td><%= link_to 'Show', admin_class_room %></td>
+        <td><%= link_to 'Edit', edit_admin_class_room_path(admin_class_room) %></td>
+        <td><%= link_to 'Destroy', admin_class_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Class room', new_admin_class_room_path %>

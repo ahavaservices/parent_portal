@@ -11,7 +11,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109133052) do
+ActiveRecord::Schema.define(version: 20160117164850) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "street_1",         limit: 255
+    t.string   "street_2",         limit: 255
+    t.string   "city",             limit: 255
+    t.string   "state",            limit: 255
+    t.string   "country",          limit: 255
+    t.string   "zip",              limit: 255
+    t.integer  "addressable_id",   limit: 4
+    t.string   "addressable_type", limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "admin_class_rooms", force: :cascade do |t|
+    t.string   "class_no",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "admin_class_sessions", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "club_classes", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.integer  "min_age",      limit: 4
+    t.integer  "max_age",      limit: 4
+    t.integer  "max_students", limit: 4
+    t.string   "status",       limit: 255
+    t.integer  "program_id",   limit: 4
+    t.integer  "level_id",     limit: 4
+    t.integer  "staff_id",     limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "levels", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "sort_order", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name",             limit: 255
@@ -23,6 +70,28 @@ ActiveRecord::Schema.define(version: 20160109133052) do
     t.integer  "user_id",                limit: 4
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+  end
+
+  create_table "programs", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "sort_order", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "staffs", force: :cascade do |t|
+    t.string   "first_name",   limit: 255
+    t.string   "last_name",    limit: 255
+    t.string   "title",        limit: 255
+    t.datetime "hire_date"
+    t.datetime "release_date"
+    t.integer  "user_id",      limit: 4
+    t.integer  "phone_no1",    limit: 4
+    t.integer  "phone_no2",    limit: 4
+    t.integer  "address_id",   limit: 4
+    t.string   "status",       limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "students", force: :cascade do |t|

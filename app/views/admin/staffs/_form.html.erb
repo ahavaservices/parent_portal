@@ -1,0 +1,63 @@
+<%= form_for([:admin,@staff]) do |f| %>
+  <% if @staff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
+
+      <ul>
+      <% @staff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :hire_date %><br>
+    <%= f.datetime_select :hire_date %>
+  </div>
+  <div class="field">
+    <%= f.label :release_date %><br>
+    <%= f.datetime_select :release_date %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_no1 %><br>
+    <%= f.number_field :phone_no1 %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_no2 %><br>
+    <%= f.number_field :phone_no2 %>
+  </div>
+<%= f.fields_for :address  do |address| %>
+  <%= address.text_field :street_1, :class=>"form-control", :placeholder=>"Street Line 1"%>
+  <%= address.text_field :street_2, :class=>"form-control", :placeholder=>"Street Line 2"%>
+  <%= address.text_field :city, :class=>"form-control", :placeholder=>"City"%>
+  <%= address.text_field :state, :class=>"form-control", :placeholder=>"State"%>
+  <%= address.text_field :country, :class=>"form-control", :placeholder=>"Country"%>
+  <%= address.text_field :zip, :class=>"form-control", :placeholder=>"Zip"%>
+<%end%>
+
+<%#= f.fields_for :user  do |user| %>
+  <%#= address.text_field :email, :class=>"form-control", :placeholder=>"Email"%>
+  <%#= address.password_field :password, :class=>"form-control", :placeholder=>"Password"%>
+  <%#= address.password_field :password_confirmation, :class=>"form-control", :placeholder=>"Password Confirmation"%>
+<%#end%>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

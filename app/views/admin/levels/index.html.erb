@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Levels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sort order</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @levels.each do |level| %>
+      <tr>
+        <td><%= level.name %></td>
+        <td><%= level.sort_order %></td>
+        <td><%= link_to 'Show', admin_level_path(level) %></td>
+        <td><%= link_to 'Edit', edit_admin_level_path(level) %></td>
+        <td><%= button_to 'Destroy', admin_level_path(level), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Level',  new_admin_level_path %>

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @club_class.name %>
+</p>
+
+<p>
+  <strong>Min age:</strong>
+  <%= @club_class.min_age %>
+</p>
+
+<p>
+  <strong>Max age:</strong>
+  <%= @club_class.max_age %>
+</p>
+
+<p>
+  <strong>Max students:</strong>
+  <%= @club_class.max_students %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @club_class.status %>
+</p>
+
+<p>
+  <strong>Program:</strong>
+  <%= @club_class.program_id %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @club_class.level_id %>
+</p>
+
+<p>
+  <strong>Staff:</strong>
+  <%= @club_class.staff_id %>
+</p>
+
+<%= link_to 'Edit', edit_admin_club_class_path(@club_class) %> |
+<%= link_to 'Back', admin_club_classes_path %>

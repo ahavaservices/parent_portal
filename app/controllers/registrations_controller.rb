@@ -1,6 +1,6 @@
  class RegistrationsController < Devise::RegistrationsController
     before_filter :configure_permitted_parameters
-
+    
 
   # GET /users/sign_up
   def new

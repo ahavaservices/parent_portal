@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @program.name %>
+</p>
+
+<p>
+  <strong>Sort order:</strong>
+  <%= @program.sort_order %>
+</p>
+
+<%= link_to 'Edit', edit_admin_program_path(@program) %> |
+<%= link_to 'Back', admin_programs_path %>
